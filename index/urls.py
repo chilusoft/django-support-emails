@@ -19,8 +19,8 @@ from django.urls import path, include
 
 router = DefaultRouter()
 
-router.register('support-email/', SupportEmailView)
-router.register('support-email-response/', SupportEmailResponseView)
+router.register(r'support-email/', SupportEmailView)
+router.register(r'support-email-response/', SupportEmailResponseView)
 
 urlpatterns = [
     path('', include(router.urls)),
