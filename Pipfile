@@ -7,8 +7,8 @@ name = "pypi"
 django = "*"
 setuptools = "*"
 djangorestframework = "*"
-python-environ = "*"
 django-environ = "*"
+python-dotenv = "*"
 
 [dev-packages]
 

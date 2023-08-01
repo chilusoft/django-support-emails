@@ -11,18 +11,14 @@ https://docs.djangoproject.com/en/4.2/ref/settings/
 """
 
 from pathlib import Path
+from dotenv import dotenv_values
+
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-import environ
-env = environ.Env(
-    # set casting, default value
-    DEBUG=(bool, False)
-)
-# reading .env file
-environ.Env.read_env()
 
+config = dotenv_values(".env")
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/4.2/howto/deployment/checklist/
 
@@ -110,11 +106,15 @@ AUTH_PASSWORD_VALIDATORS = [
 
 EMAIL_HOST="smtp.gmail.com"
 EMAIL_PORT=587
-EMAIL_HOST_USER="chilusoftdeveloper@gmail.com"
-EMAIL_HOST_PASSWORD="chilusoftdeveloper@123"
-EMAIL_HOST_PASSWORD="dldjwtoqsruesowq"
+EMAIL_HOST_USER=config.get("EMAIL_HOST_USER")
+EMAIL_HOST_PASSWORD=config.get("EMAIL_HOST_PASSWORD")
 EMAIL_USE_TLS = True
 EMAIL_USE_SSL = False
+
+REST_FRAMEWORK = {
+    'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.LimitOffsetPagination',
+    'PAGE_SIZE': 10
+}
 
 # Internationalization
 # https://docs.djangoproject.com/en/4.2/topics/i18n/
