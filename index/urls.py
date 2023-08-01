@@ -17,13 +17,10 @@ from .views import SupportEmailView, SupportEmailResponseView, send_support_emai
 from django.urls import path, include
 
 
-router = DefaultRouter()
-
-router.register(r'support-email/', SupportEmailView)
-router.register(r'support-email-response/', SupportEmailResponseView)
 
 urlpatterns = [
-    path('', include(router.urls)),
+    path('support-email/get/', SupportEmailView.as_view()),
+    path('support-email-response/get/', SupportEmailResponseView.as_view()),
     path('send-support-email/', send_support_email),
     path('send-support-email-response/', send_support_email_response)
 ]

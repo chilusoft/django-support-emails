@@ -27,10 +27,10 @@ def send_support_email(request):
     if request.method == 'POST':
         try:
             # generate support ticket number
-            support_ticket_number = 'FEIP-SUP-' + str(random.randint(100000, 999999))
+            support_ticket_number = 'SUP-' + str(random.randint(100000, 999999))
             while True:
                 if SupportEmail.objects.filter(support_ticket=support_ticket_number).exists():
-                    support_ticket_number = 'FEIP-SUP-' + str(random.randint(100000, 999999))
+                    support_ticket_number = 'SUP-' + str(random.randint(100000, 999999))
                 else:
                     break
             # send email
